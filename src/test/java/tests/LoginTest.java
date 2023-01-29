@@ -1,5 +1,6 @@
 package tests;
 
+import config.BaseTest;
 import config.Spec;
 import io.restassured.http.ContentType;
 import models.LoginRequestModel;
@@ -13,10 +14,9 @@ import static org.hamcrest.Matchers.is;
 
 import static io.restassured.RestAssured.given;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
     @Test
     void loginTest(){
-
         LoginRequestModel data = new LoginRequestModel();
         data.setEmail("eve.holt@reqres.in");
         data.setPassword("cityslicka");
@@ -37,7 +37,4 @@ public class LoginTest {
         assertThat(response.getToken()).isEqualTo("QpwL5tke4Pnpja7X4");
 
     }
-
-
-
 }
