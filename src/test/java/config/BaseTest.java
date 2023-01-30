@@ -12,11 +12,12 @@ public class BaseTest {
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        RestAssured.filters(withCustomTemplates());
     }
 
     @BeforeAll
     public static void beforeAll() {
-        RestAssured.filters(withCustomTemplates());
+//        RestAssured.filters(withCustomTemplates());
         RestAssured.baseURI = "https://reqres.in";
     }
 }

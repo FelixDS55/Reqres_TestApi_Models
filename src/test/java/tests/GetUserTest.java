@@ -2,7 +2,6 @@ package tests;
 
 import config.BaseTest;
 import config.Spec;
-import io.restassured.http.ContentType;
 import models.UserResponseModel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,7 @@ public class GetUserTest extends BaseTest {
                 .get("users/2")
                 .then()
                 .log().all()
-                .statusCode(200)
+                .spec(Spec.responseSpec200())
                 .extract()
                 .as(UserResponseModel.class);
 

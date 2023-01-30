@@ -6,13 +6,11 @@ import io.restassured.http.ContentType;
 import models.LoginRequestModel;
 import models.LoginResponseModel;
 
-import static io.restassured.RestAssured.baseURI;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.is;
 
-import static io.restassured.RestAssured.given;
 
 public class LoginTest extends BaseTest {
     @Test
@@ -24,13 +22,12 @@ public class LoginTest extends BaseTest {
         LoginResponseModel response = Spec.request
         .given()
                 .log().uri()
-                .contentType(ContentType.JSON)
                 .body(data)
                 .when()
                 .post("/login")
                 .then()
                 .log().all()
-                .statusCode(200)
+                .spec(Spec.responseSpec200())
                 .body("token", is("QpwL5tke4Pnpja7X4"))
                 .extract().as(LoginResponseModel.class);
 
