@@ -2,7 +2,6 @@ package tests;
 
 import config.BaseTest;
 import config.Spec;
-import models.LoginResponseModel;
 import models.LoginUnsuccessfulRequest;
 import models.LoginUnsuccessfulResponse;
 import org.junit.jupiter.api.Test;
